@@ -10,7 +10,7 @@ import { HttpService } from '../service/http.service';
 })
 export class MovieListComponent implements OnInit {
 
-  movies: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
+  movies$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
 
   constructor(private httpService: HttpService) { }
 
@@ -18,9 +18,12 @@ export class MovieListComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.movies = this.httpService.movieList$;
+    this.movies$ = this.httpService.movieList$;
   }
 
-  deleteMovie(id: number): any { }
+  deleteMovie(id: number): any {
+    this.httpService.deleteMovie(id);
+    this.getMovies();
+  }
 
 }

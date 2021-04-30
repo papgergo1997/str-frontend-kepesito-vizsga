@@ -20,8 +20,7 @@ export class MovieComponent implements OnInit {
   }
 
   saveMovie(form: NgForm, movie): any {
-
-    return {};
+    console.log(movie)
   }
 
 }
