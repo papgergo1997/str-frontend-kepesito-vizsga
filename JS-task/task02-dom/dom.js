@@ -1,8 +1,12 @@
 function changeOuterLinks() {
     const navElement = document.querySelector("nav#link-list");
     const aElements = document.querySelectorAll("nav#link-list a")
-        .forEach(el => el.innerHTML.includes('outer') ? el.setAttribute('target', '_blank') : !el);
-
+        .forEach(el => {
+            if (el.innerHTML.includes('outer')) {
+                el.setAttribute('target', '_blank');
+                el.innerHTML = `<strong>${el.innerHTML}</strong>`;
+            }
+        });
     navElement.style.display = 'flex';
     navElement.style.flexDirection = 'column';
     navElement.style.width = '30%';
@@ -11,5 +15,5 @@ function changeOuterLinks() {
     navElement.style.padding = '16px';
 }
 
-changeOuterLinks()
+
 export { changeOuterLinks };
