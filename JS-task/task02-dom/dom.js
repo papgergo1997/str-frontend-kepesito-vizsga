@@ -5,7 +5,7 @@ function changeOuterLinks() {
 
     navElement.style.display = 'flex';
     navElement.style.flexDirection = 'column';
-    // navElement.style.width = '30%';
+    navElement.style.width = '30%';
 }
 
 changeOuterLinks()
