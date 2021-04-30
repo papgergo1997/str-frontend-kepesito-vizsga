@@ -1,19 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Movie } from '../model/movie';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  BASE_URL = 'http://localhost:3000/movies';
+  apiURL: string = 'https://tr360-frontend-exam-april.azurewebsites.net/papgergo1997/movies';
+  movieList$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
 
-  constructor(undefined) { }
+  constructor(private http: HttpClient) { }
 
-  getMovieList():any {
-    return null;
+  getMovieList(): void {
+    this.http.get<Movie[]>(this.apiURL).subscribe(list => this.movieList$.next(list))
   }
 
-  deleteMovie(id):any {
+  deleteMovie(id): any {
     return null;
   }
 }

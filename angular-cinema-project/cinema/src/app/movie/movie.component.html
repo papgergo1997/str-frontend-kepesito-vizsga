@@ -2,16 +2,18 @@
   <form #mForm="ngForm">
     <div class="form-group">
       <label class="text-warning" for="title">Movie Title:</label>
-      <input id="title" type="text" class="form-control" required pattern="" name="title" [(ngModel)]="movie.title">
+      <input id="title" type="text" class="form-control" required pattern="[A-Za-ZáéűúőóöüíÍÉÁŰÚŐÖÜÓ ]{5,25}"
+        name="title" [(ngModel)]="movie.title">
     </div>
     <div class="row">
       <div class="form-group col-6">
         <label class="text-warning" for="year">Release year:</label>
-        <input id="year" type="text" class="form-control" required pattern="" name="year" [(ngModel)]="movie.title">
+        <input id="year" type="text" class="form-control" required pattern="^(19|20)" name="year"
+          [(ngModel)]="movie.year">
       </div>
       <div class="form-group col-6">
         <label class="text-warning" for="category">Category:</label>
-        <select name="category" id="category" class="form-control" value="Choose">
+        <select name="category" id="category" class="form-control" [(ngModel)]="movie.category">
           <option value="" selected disabled hidden>Choose Category</option>
           <option value="Drama">Drama</option>
           <option value="Action">Action</option>
@@ -19,6 +21,11 @@
         </select>
       </div>
     </div>
+    <button class="btn btn-warning mb-2" type="submit" [disabled]="mForm.invalid">Save</button>
+    <div class="row">
+      <small [hidden]="mForm.valid || mForm.pristine" class="ml-3 mb-4 text-danger">Fill all field to save!</small>
+    </div>
+
 
   </form>
 
