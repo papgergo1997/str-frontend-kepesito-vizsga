@@ -8,6 +8,7 @@ function changeOuterLinks() {
     navElement.style.width = '30%';
     navElement.style.margin = '0 auto';
     navElement.style.border = '1px solid blue';
+    navElement.style.padding = '16px';
 }
 
 changeOuterLinks()
